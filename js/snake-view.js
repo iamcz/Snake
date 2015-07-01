@@ -8,7 +8,9 @@
     this.$el = $el;
     this.board = board;
     this.render();
-    this.started = false;
+    // this.started = false;
+    this.start();
+    this.bindKeyHandlers();
   }
 
   // View.prototype.setupBoard = function() {
@@ -27,38 +29,44 @@
   // }
 
   View.prototype.bindKeyHandlers = function () {
-    var snake = this.board.snake;
+    var view = this;
     key('left', function() {
-      snake.turn('W');
+      view.moveDir = 'W';
+      //snake.turn('W');
     })
     key('right', function() {
-      snake.turn('E');
+      view.moveDir = 'E';
+      // snake.turn('E');
     })
     key('up', function() {
-      snake.turn('S');
+      view.moveDir = 'S';
+      // snake.turn('S');
     })
     key('down', function() {
-      snake.turn('N');
+      view.moveDir = 'N';
+      // snake.turn('N');
     })
   }
 
-  View.prototype.start = function(dir) {
-    if (this.started) { return; }
-    this.started = true;
+  View.prototype.start = function() {
+    // if (this.started) { return; }
+    // this.started = true;
     var board = this.board;
-    board.snake.dir = dir;
-
-    this.bindKeyHandlers();
+    // board.snake.dir = dir;
 
     setInterval(function (){
-      board.step();
-      console.log("step!")
-      if (board.lose()) {
-        alert("You lose!");
-      } else {
-        this.render();
+      board.snake.turn(this.moveDir)
+      if (board.snake.dir !== undefined) {
+        board.step();
+        //console.log("step!")
+        if (board.lose()) {
+          board.snake.dir = undefined
+          alert("You lose!");
+        } else {
+          this.render();
+        }
       }
-    }.bind(this), 200);
+    }.bind(this), 500);
   }
 
   View.prototype.render = function () {
@@ -67,15 +75,18 @@
     for (i = 0; i < this.board.dimY; i++){
       for (var j = 0; j < this.board.dimX; j++){
         var $liEl = $("<li></li>");
-        if (SnakeGame.Coord.equals([j,i], this.board.snake.head())){
-          $liEl.addClass("snake");
-        } else if (SnakeGame.Coord.equals([j,i], this.board.applePos)){
+        this.board.snake.body.forEach(function(bodyPos) {
+          if (SnakeGame.Coord.equals([j,i], bodyPos)){
+            $liEl.addClass("snake");
+          }
+        })
+
+        if (SnakeGame.Coord.equals([j,i], this.board.applePos)){
           $liEl.addClass("apple");
         }
         $boardEl.append($liEl);
       }
     }
   }
-
 
 })();
