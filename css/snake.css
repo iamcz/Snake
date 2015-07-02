@@ -25,14 +25,14 @@ body, html, ul, li, h1 {
 
 .board {
   margin: 0 auto;
-  width: 400px;
+  width: 700px;
   border: 1px solid #AAA;
 }
 
 .board > li {
   float: left;
-  width: 18px;
-  height: 18px;
+  width: 33px;
+  height: 33px;
   border: 1px solid #AAA;
 }
 
