@@ -41,7 +41,7 @@
         board.step();
         if (board.lose()) {
           board.snake.dir = undefined;
-          this.movedDir = undefined;
+          this.moveDir = undefined;
           alert("You Lose!");
         } else {
           this.render();
