@@ -25,23 +25,6 @@
       var $snakeGameEl = $(".snake-game");
       var board = new SnakeGame.Board(20, 20);
       var view = new SnakeGame.View($snakeGameEl, board);
-
-      $(window).on("keydown", function(event) {
-        switch (event.keyCode) {
-          case 37:
-            view.start('W');
-            break;
-          case 38:
-            view.start('S');
-            break;
-          case 39:
-            view.start('E');
-            break;
-          case 40:
-            view.start('N');
-            break;
-        }
-      })
     })
     </script>
 

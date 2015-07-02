@@ -8,25 +8,9 @@
     this.$el = $el;
     this.board = board;
     this.render();
-    // this.started = false;
     this.start();
     this.bindKeyHandlers();
   }
-
-  // View.prototype.setupBoard = function() {
-  //   var $boardEl = this.$el.find('.board');
-  //   for (i = 0; i < this.board.dimX; i++){
-  //     for (var j = 0; j < this.board.dimY; j++){
-  //       var $liEl = $("<li></li>");
-  //       if (SnakeGame.Coord.equals([i,j], this.board.snake.head())){
-  //         $liEl.addClass("snake");
-  //       } else if (SnakeGame.Coord.equals([i,j], this.board.applePos)){
-  //         $liEl.addClass("apple");
-  //       }
-  //       $boardEl.append($liEl);
-  //     }
-  //   }
-  // }
 
   View.prototype.bindKeyHandlers = function () {
     var view = this;
@@ -49,24 +33,21 @@
   }
 
   View.prototype.start = function() {
-    // if (this.started) { return; }
-    // this.started = true;
     var board = this.board;
-    // board.snake.dir = dir;
 
     setInterval(function (){
       board.snake.turn(this.moveDir)
       if (board.snake.dir !== undefined) {
         board.step();
-        //console.log("step!")
         if (board.lose()) {
-          board.snake.dir = undefined
-          alert("You lose!");
+          board.snake.dir = undefined;
+          this.movedDir = undefined;
+          alert("You Lose!");
         } else {
           this.render();
         }
       }
-    }.bind(this), 500);
+    }.bind(this), 100);
   }
 
   View.prototype.render = function () {
