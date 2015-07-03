@@ -37,9 +37,27 @@ body, html, ul, li, h1 {
 }
 
 .snake {
-  background: #F00;
+  background: #FC9D6F;
 }
 
+.snake-head {
+	background-image: url("../drakenoteeth.jpg");
+	background-size: cover;
+}
+
+/*.N {
+	transform: rotate(90deg);
+}*/
+
+.W {
+	transform: scaleX(-1);
+}
+
+/*.S {
+	transform: rotate(270deg);
+}*/
+
 .apple {
-  background: #0f0;
+  background-image: url("../ovoOwl.jpg");
+	background-size: cover;
 }
