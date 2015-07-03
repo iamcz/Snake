@@ -26,14 +26,14 @@ body, html, ul, li, h1 {
 .board {
   margin: 0 auto;
   width: 700px;
-  border: 1px solid #AAA;
+  border: 1px solid #EEE;
 }
 
 .board > li {
   float: left;
   width: 33px;
   height: 33px;
-  border: 1px solid #AAA;
+  border: 1px solid #EEE;
 }
 
 .snake {
@@ -45,19 +45,11 @@ body, html, ul, li, h1 {
 	background-size: cover;
 }
 
-/*.N {
-	transform: rotate(90deg);
-}*/
-
 .W {
 	transform: scaleX(-1);
 }
 
-/*.S {
-	transform: rotate(270deg);
-}*/
-
 .apple {
-  background-image: url("../ovoOwl.jpg");
+  background-image: url("../ovoOwl.png");
 	background-size: cover;
 }
