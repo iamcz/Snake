@@ -30,6 +30,7 @@
 
   View.prototype.changeDir = function(dir) {
     var snakeDir = this.board.snake.dir;
+
     if (!SnakeGame.Coord.opposite(snakeDir, dir)) {
       this.moveDir = dir;
     }
