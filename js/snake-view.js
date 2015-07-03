@@ -13,18 +13,26 @@
 
   View.prototype.bindKeyHandlers = function () {
     var view = this;
+
     key('left', function() {
-      view.moveDir = 'W';
+      view.changeDir('W');
     })
     key('right', function() {
-      view.moveDir = 'E';
+      view.changeDir('E');
     })
     key('up', function() {
-      view.moveDir = 'S';
+      view.changeDir('S');
     })
     key('down', function() {
-      view.moveDir = 'N';
+      view.changeDir('N');
     })
+  }
+
+  View.prototype.changeDir = function(dir) {
+    var snakeDir = this.board.snake.dir;
+    if (!SnakeGame.Coord.opposite(snakeDir, dir)) {
+      this.moveDir = dir;
+    }
   }
 
   View.prototype.start = function() {
