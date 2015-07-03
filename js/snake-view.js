@@ -16,16 +16,16 @@
 
     key('left', function() {
       view.changeDir('W');
-    })
+    });
     key('right', function() {
       view.changeDir('E');
-    })
+    });
     key('up', function() {
       view.changeDir('S');
-    })
+    });
     key('down', function() {
       view.changeDir('N');
-    })
+    });
   }
 
   View.prototype.changeDir = function(dir) {
@@ -39,9 +39,11 @@
     var board = this.board;
 
     setInterval(function (){
-      board.snake.turn(this.moveDir)
+      board.snake.turn(this.moveDir);
+
       if (board.snake.dir !== undefined) {
         board.step();
+        
         if (board.lose()) {
           board.snake.dir = undefined;
           this.moveDir = undefined;
@@ -60,15 +62,14 @@
   }
 
   View.prototype.render = function () {
-    var idx, bodyPart, boardElements = this.$el.find(".board li");
-    boardElements.removeClass("snake apple snake-head N S E W");
-    
-    var snake = this.board.snake
+    this.$boardEls.removeClass("snake apple snake-head N S E W");
+    var snake = this.board.snake;
+
     this.renderPosWithClass(snake.head(), "snake-head " + snake.dir)
 
     snake.tail().forEach( function(tailPos) {
       this.renderPosWithClass(tailPos, "snake")
-    }.bind(this))
+    }.bind(this));
     
     this.renderPosWithClass(this.board.applePos, "apple")
   }
@@ -84,7 +85,7 @@
     }
 
     this.$boardEls = this.$el.find(".board li");
-    this.render()
+    this.render();
   }
 
 })();
