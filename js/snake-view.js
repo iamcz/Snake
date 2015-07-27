@@ -5,11 +5,18 @@
 
   var View = SnakeGame.View = function ($el, board) {
     this.$el = $el;
+    this.lossModal = $el.find(".you-lose-modal");
     this.board = board;
-    this.setupBoard();
-    this.start();
+
+    this.setupGame();
     this.bindKeyHandlers();
   }
+
+  View.prototype.setupGame = function () {
+    this.gameOver = false;
+    this.setupBoard();
+    this.start();
+  },
 
   View.prototype.bindKeyHandlers = function () {
     var view = this;
@@ -29,6 +36,7 @@
   }
 
   View.prototype.changeDir = function(dir) {
+    if (this.gameOver) return;
     var snakeDir = this.board.snake.dir;
 
     if (!SnakeGame.Coord.opposite(snakeDir, dir)) {
@@ -48,7 +56,9 @@
         if (board.lose()) {
           board.snake.dir = undefined;
           this.moveDir = undefined;
-          alert("You Lose!");
+          this.renderLossModal();
+          this.gameOver = true;
+          //alert("You Lose!");
         } else {
           this.render();
         }
@@ -93,6 +103,10 @@
   View.prototype.renderScore = function () {
     var score = this.board.snake.body.length * 100;
     this.$el.find(".scorekeeper").html(score);
+  },
+
+  View.prototype.renderLossModal = function () {
+    this.lossModal.addClass("visible");
   }
 
 })();
