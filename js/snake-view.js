@@ -5,17 +5,19 @@
 
   var View = SnakeGame.View = function ($el, board) {
     this.$el = $el;
-    this.lossModal = $el.find(".you-lose-modal");
+    this.$lossModal = $el.find(".you-lose-modal");
+    this.$lossModal.on("click", "button", this.setupGame.bind(this));
     this.board = board;
 
     this.setupGame();
+    this.start();
     this.bindKeyHandlers();
   }
 
   View.prototype.setupGame = function () {
     this.gameOver = false;
+    this.$lossModal.removeClass("visible");
     this.setupBoard();
-    this.start();
   },
 
   View.prototype.bindKeyHandlers = function () {
@@ -88,7 +90,8 @@
   
   View.prototype.setupBoard = function () {
     var $liEl, $boardEl = this.$el.find('.board');
-
+    $boardEl.empty();
+    
     for (i = 0; i < this.board.dimY; i++){
       for (var j = 0; j < this.board.dimX; j++){
         $liEl = $("<li></li>");
@@ -106,7 +109,7 @@
   },
 
   View.prototype.renderLossModal = function () {
-    this.lossModal.addClass("visible");
+    this.$lossModal.addClass("visible");
   }
 
 })();
