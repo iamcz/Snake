@@ -7,7 +7,7 @@
   var Board = SnakeGame.Board = function (dimX, dimY) {
     this.dimX = dimX;
     this.dimY = dimY;
-    this.setup();
+    // this.setup();
   }
 
   Board.prototype.setup = function () {
