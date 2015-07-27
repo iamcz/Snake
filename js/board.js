@@ -7,11 +7,15 @@
   var Board = SnakeGame.Board = function (dimX, dimY) {
     this.dimX = dimX;
     this.dimY = dimY;
+    this.setup();
+  }
+
+  Board.prototype.setup = function () {
     this.snake = new SnakeGame.Snake(
       SnakeGame.Coord.randomPos(this.dimX, this.dimY)
     );
     this.appleGen();
-  }
+  },
 
   Board.prototype.appleGen = function () {
     var randomPos = SnakeGame.Coord.randomPos(this.dimX, this.dimY);

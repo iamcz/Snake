@@ -15,6 +15,7 @@
   }
 
   View.prototype.setupGame = function () {
+    this.board.setup();
     this.gameOver = false;
     this.$lossModal.removeClass("visible");
     this.setupBoard();
@@ -56,11 +57,7 @@
         board.step();
         
         if (board.lose()) {
-          board.snake.dir = undefined;
-          this.moveDir = undefined;
-          this.renderLossModal();
-          this.gameOver = true;
-          //alert("You Lose!");
+          this.handleLoss();
         } else {
           this.render();
         }
@@ -108,7 +105,10 @@
     this.$el.find(".scorekeeper").html(score);
   },
 
-  View.prototype.renderLossModal = function () {
+  View.prototype.handleLoss = function () {
+    this.board.snake.dir = undefined;
+    this.moveDir = undefined;
+    this.gameOver = true;
     this.$lossModal.addClass("visible");
   }
 
