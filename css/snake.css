@@ -1,4 +1,4 @@
-body, html, ul, li, h1 {
+body, html, ul, li, h1, h2 {
   padding: 0;
   border: 0;
   margin: 0;
@@ -12,6 +12,14 @@ body, html, ul, li, h1 {
   list-style: none;
 }
 
+body {
+	font-family: sans-serif;
+}
+
+h1 {
+	font-weight: 700;
+}
+
 .group:after {
   content: "";
   display: block;
@@ -21,6 +29,22 @@ body, html, ul, li, h1 {
 .snake-game {
   text-align: center;
   font-size: 36px;
+}
+
+.snake-header {
+	width: 700px;
+	margin: 0 auto;
+}
+.snake-game h1 {
+	width: 100px;
+	float: left;
+}
+
+.snake-game h2 {
+	margin-top: 12px;
+	float: right;
+	font-size: 24px;
+	color: #F00;
 }
 
 .board {

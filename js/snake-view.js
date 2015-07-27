@@ -73,6 +73,7 @@
     }.bind(this));
     
     this.renderPosWithClass(this.board.applePos, "apple")
+    this.renderScore();
   }
   
   View.prototype.setupBoard = function () {
@@ -87,6 +88,11 @@
 
     this.$boardEls = this.$el.find(".board li");
     this.render();
+  },
+
+  View.prototype.renderScore = function () {
+    var score = this.board.snake.body.length * 100;
+    this.$el.find(".scorekeeper").html(score);
   }
 
 })();
