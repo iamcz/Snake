@@ -8,15 +8,21 @@
   <body>
     <figure class="snake-game">
       <header class="snake-header group">
-        <h1>Drake</h1>
-        <h2 class="score">
-          Score:
-          <span class="scorekeeper"></span>
-        </h2>
+        <section class="header-left">
+          <h1>Drake</h1>
+          <h6 class="info">Control Drake with the arrow keys!</h6>
+        </section>
+        <section class="header-right">
+          <h2>
+            Score:
+            <span class="scorekeeper"></span>
+          </h2>
+        </section>
       </header>
 
       <section class="you-lose-modal">
         <h3>You Lose!</h3>
+        <p>Your score was <span class="scorekeeper"></span>
         <button>Restart Game</button>
       </section>
 

@@ -1,4 +1,4 @@
-body, html, ul, li, h1, h2, h3, button {
+body, html, ul, li, p, h1, h2, h3, h4, h5, h6, button {
   padding: 0;
   border: 0;
   margin: 0;
@@ -28,23 +28,34 @@ h1 {
 
 .snake-game {
   text-align: center;
-  font-size: 36px;
 }
 
 .snake-header {
-	width: 700px;
+	width: 600px;
 	margin: 0 auto;
 }
 .snake-header h1 {
+  font-size: 36px;
 	width: 100px;
-	float: left;
 }
 
 .snake-header h2 {
-	margin-top: 12px;
-	float: right;
+	margin-top: 26px;
 	font-size: 24px;
+	font-weight: 700;
 	color: #F00;
+}
+
+.snake-header h6 {
+	font-size: 14px;
+}
+
+.snake-header .header-left {
+	float: left;
+}
+
+.snake-header .header-right {
+	float: right;
 }
 
 .you-lose-modal {
@@ -83,20 +94,20 @@ h1 {
 
 .you-lose-modal button:active {
 	background: #090;
-	margin-top: 16px;
+	margin-top: 12px;
 	box-shadow: none;
 }
 
 .board {
   margin: 0 auto;
-  width: 700px;
+  width: 600px;
   border: 1px solid #EEE;
 }
 
 .board > li {
   float: left;
-  width: 33px;
-  height: 33px;
+  width: 28px;
+  height: 28px;
   border: 1px solid #EEE;
 }
 
