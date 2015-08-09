@@ -1,7 +1,7 @@
 # Drake (Snake)
 
 [Live link] [live]
-[live]: http://www.iamcharleszahn.com/Snake
+[live]: http://www.iamcharleszahn.com/drake
 
 Play your favorite classic arcade game, Snake, as your favorite rapper, Drake.
 It is truly a match made in heaven. Use the arrow keys to control Drake.
